@@ -1,0 +1,39 @@
+add_library(gibuu_preevlist
+	PreEvList.f90
+)
+
+add_library(gibuu_storage
+	bzip.f90
+	hist_multipleRuns.f90
+	PartInfoListIndex.f90
+	PartInfoList_freezout.f90
+	EventInfo_HiLep.f90
+	PartInfoList_rhoDiffractive.f90
+	histMC.f90
+	PartInfoList_mesonMom.f90
+	Sorting.f90
+	hist2DMP.f90
+	histMC_avg.f90
+	hist_multipleRuns_MC.f90
+	PartInfoList_FormInfo.f90
+	particlePointerList.f90
+	PartInfoList_rho0Dec.f90
+	CollHistory.f90
+	hist2D.f90
+	histMP.f90
+	hist.f90
+	PartInfoList_nLead.f90
+	PartInfoList_omegaDec.f90
+	PartInfoListCollected.f90
+)
+
+target_link_libraries(gibuu_preevlist
+	PUBLIC
+		gibuu_preevdefinition
+)
+
+target_link_libraries(gibuu_storage
+	PUBLIC
+		gibuu_callstack
+		gibuu_preevlist
+)

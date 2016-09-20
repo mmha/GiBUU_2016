@@ -1,0 +1,14 @@
+module version
+    contains
+    subroutine PrintVersion
+        implicit none
+        write(*,2) "Release     : 2016"
+        write(*,2) "SVN Revision: 42"
+        write(*,2) "Build Date  : "
+        write(*,2) "OS          : "
+        write(*,2) "Compiler    : "
+        write(*,2) "Flags       : @CMAKE_Fortran_FLAGS@"
+        write(*,2) "PATH        : @CMAKE_PROJECT_DIR@"
+        2 FORMAT(" ",A)
+    end subroutine PrintVersion
+end module version

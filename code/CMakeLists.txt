@@ -1,0 +1,27 @@
+set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+
+#add_subdirectory(analysis)
+#add_subdirectory(collisions)
+#add_subdirectory(database)
+#add_subdirectory(density)
+#add_subdirectory(init)
+#add_subdirectory(inMediumWidth)
+#add_subdirectory(inputOutput)
+#add_subdirectory(numerics)
+#add_subdirectory(potential)
+#add_subdirectory(propagation)
+#add_subdirectory(rmf)
+#add_subdirectory(run)
+#add_subdirectory(spectralFunctions)
+#add_subdirectory(storage)
+#add_subdirectory(typeDefinitions)
+#add_subdirectory(width)
+
+file(GLOB_RECURSE F90_SOURCES *.f90)
+file(GLOB_RECURSE F77_SOURCES *.f)
+
+configure_file("Version.f90.in" "${CMAKE_CURRENT_BINARY_DIR}/Version.f90" @ONLY)
+add_library(gibuu ${F90_SOURCES} ${F77_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/Version.f90)
+
+add_executable(gibuurun GiBUU.f90)
+target_link_libraries(gibuurun PUBLIC gibuu bz2)
